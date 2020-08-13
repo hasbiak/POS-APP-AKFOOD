@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Responsive Web Design (RWD) using HTML, CSS, and Bootstrap">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/history.css">
@@ -23,7 +24,7 @@
         </header>
         <div class="row">
             <div class="col-lg-1">
-                <aside>
+                <nav>
                     <a href="index.html"><img class="sidebar-icon" src="assets/img/fork.png" alt="food-menu"></a>
                     <a href="history.html">
                         <img class="sidebar-icon" src="assets/img/clipboard.png" alt="history">
@@ -31,40 +32,49 @@
                     <a href="" data-toggle="modal" data-target="#addModal">
                         <img class="sidebar-icon" src="assets/img/add.png" alt="add">
                     </a>
-                </aside>
+                </nav>
             </div>
             <div class="col-lg-11">
-                <article>
+                <div class="container-fluid container-content">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="today-income">
+                            <article class="today-income">
                                 <div class="container">
                                     <p>Today's Income</p>
                                     <h3>Rp. 1.000.000</h3>
                                     <p>+2% Yesterday</p>
+                                    <img src="assets/img/Ellipse 1.png" alt="ellipse" class="ellipse1">
+                                    <img src="assets/img/Ellipse 1.png" alt="ellipse" class="ellipse2">
+                                    <img src="assets/img/Ellipse 1.png" alt="ellipse" class="ellipse3">
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="col-lg-4">
-                            <div class="order">
+                            <article class="order">
                                 <div class="container">
                                     <p>Orders</p>
                                     <h3>3270</h3>
                                     <p>+5% Last Week</p>
+                                    <img src="assets/img/Ellipse 2.png" alt="ellipse" class="ellipse1">
+                                    <img src="assets/img/Ellipse 2.png" alt="ellipse" class="ellipse2">
+                                    <img src="assets/img/Ellipse 2.png" alt="ellipse" class="ellipse3">
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         <div class="col-lg-4">
-                            <div class="year-income">
+                            <article class="year-income">
                                 <div class="container">
                                     <p>This Year's Income</p>
                                     <h3>Rp. 100.000.000.000 </h3>
                                     <p>+10% Last Year</p>
-                                </div>
-                            </div>
+                                    <img src="assets/img/Ellipse 3.png" alt="ellipse" class="ellipse1">
+                                    <img src="assets/img/Ellipse 3.png" alt="ellipse" class="ellipse2">
+                                    <img src="assets/img/Ellipse 3.png" alt="ellipse" class="ellipse3">
+                            </article>
                         </div>
                     </div>
-                    <div class="revenue">
+
+                    <article class="revenue">
                         <div class="row">
                             <div class="col-lg-6">
                                 <h4>Revenue</h4>
@@ -83,8 +93,57 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="recent-order">
+                        <canvas id="myChart"></canvas>
+                        <script>
+                            var ctx = document.getElementById('myChart').getContext('2d');
+                            var chart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+                                    datasets: [{
+                                            label: 'This Month',
+                                            borderColor: '#00F1FF',
+                                            data: [20021, 40203, 46484, 4786, 3185, 19212, 15004, 24924,
+                                                36282, 27185, 23795, 19681, 29324, 18279
+                                            ],
+                                            fill: false,
+                                            pointRadius: 0
+                                        },
+                                        {
+                                            label: 'Last Month',
+                                            borderColor: '#FFB8C6',
+                                            data: [30828, 16774, 26254, 29741, 1601, 48120, 18633, 45875,
+                                                26019, 5309, 47866, 32236, 25292, 34532
+                                            ],
+                                            fill: false,
+                                            pointRadius: 0
+                                        }
+                                    ],
+                                },
+                                options: {
+                                    responsive: true,
+                                    scales: {
+                                        xAxes: [{
+                                            gridLines: {
+                                                display: false
+                                            },
+                                            ticks: {
+                                                display: false
+                                            }
+                                        }]
+                                    },
+                                    legend: {
+                                        position: 'bottom',
+                                        labels: {
+                                            boxWidth: 10,
+                                            padding: 20
+                                        },
+                                    }
+                                }
+                            });
+                        </script>
+                    </article>
+                    <article class="recent-order">
                         <div class="row">
                             <div class="col-lg-6">
                                 <h4>Recent Order</h4>
@@ -125,12 +184,11 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </article>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -180,7 +238,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
